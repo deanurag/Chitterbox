@@ -53,7 +53,7 @@ const getMessages = async (req, res) => {
     }
     catch(error){
         console.log("Error in sendMessage Controller",error.message)
-        res.status(500).jso({error:"Server Error"});
+        res.status(500).json({error:"Server Error"});
     }
 }
 module.exports = { sendMessage, getMessages };

@@ -17,7 +17,7 @@ dotenv.config();
 app.use(express.json());    // To parse the incoming requests with JSON payloads(from req.body)
 app.use(cookieParser());    // To parse the incoming requests with cookies(from req.cookies)
 app.use("/api/auth",authRoutes);
-app.use("/api/message",messageRoutes);
+app.use("/api/messages",messageRoutes);
 app.use("/api/users",userRoutes);
 
 
