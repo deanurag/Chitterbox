@@ -19,15 +19,17 @@ const signup = async (req,res)=>{
         const hashedPassword = await bcrypt.hash(password,salt);
 
 
-        const profilePic = `https://avatar.iran.liara.run/username?username=${fullName}`
+        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
-        const newUser = new User({
-          fullName,
-          username,
-          password: hashedPassword,
-          gender,
-          profilePic,
-        });
+		const newUser = new User({
+			fullName,
+			username,
+			password: hashedPassword,
+			gender,
+			profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
+		});
+        
         if(newUser) {
             //Generate JWT Token
             generateTokenAndSetCookie(newUser._id,res);
